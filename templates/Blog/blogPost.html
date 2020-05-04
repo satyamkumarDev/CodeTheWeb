@@ -3,5 +3,15 @@
 {% block title %}Blog Post{% endblock title %}
 
 {%block body%}
-<h1>Blog Post Templates!</h1>
+<div class="container my-4">
+    <div class="jumbotron">
+        <h1 class="display-4" style="color:#5cb3b2;">{{post.title}}</h1>
+        <h6 class="text-muted">{{post.title}} by {{post.author}}</h6>
+        <hr class="my-4">
+        <p class=" lead my-2">{{post.content}}</p>
+        <hr class="my-4">
+        <h6 class="text-right text-muted">Date and Time is: {{post.timestamp}}</h6>
+
+    </div>
+</div>
 {%endblock body%}

@@ -1,7 +1,38 @@
 {% extends 'base.html' %}
 
 {% block title %}Home{% endblock title %}
-
+{%block homeactive%}active{%endblock homeactive%}
 {%block body%}
-<h1>Home Body!</h1>
+<div class="container my-4">
+    <div class="jumbotron">
+        <h1 class="display-4" style="color:#5cb3b2;">Welcome to CodeTheWeb!</h1>
+        <p class="lead">CodeTheWeb is myBlog posts which is related to Python and Reactjs blogs. I have created this web sites to help students to gain the
+         Knowledge in desired Technolgy. And I hope it will help them a lot.</p>
+        <hr class="my-4">
+        <p>I am sure that myBlog will help them to understand concept from basic to advance!</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/blog" role="button">Go To MyBlog!</a>
+        </p>
+    </div>
+</div>
+<div class="container my-3">
+    <h1 style="color:#FF5733">MyBlog Posts!</h1>
+    {% for post in posts%}
+     <div class="card my-4">
+        <div class="card-header">
+            <h2 style="color:#3cb5b2">{{post.title}}</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {{post.content | truncatechars:150}}
+            </p>
+            <a href="/blog" class="btn btn-primary">continue Reading--></a>
+        </div>
+         <div class="card-footer text-muted text-right">
+            <h6> articles by {{post.author}}, Date and Time is: {{post.timestamp}} </h6>
+        </div>
+    </div>
+    {%endfor%}
+
+</div>
 {%endblock body%}

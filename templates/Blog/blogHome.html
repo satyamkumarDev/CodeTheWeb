@@ -1,7 +1,26 @@
 {% extends 'base.html' %}
-
 {% block title %}Blog{% endblock title %}
-
+{%block blogactive%}active{%endblock blogactive%}
 {%block body%}
-<h1>Blog Home Templates!</h1>
+<div class="container my-4">
+    <h1 style="color:#FF5733;">MyBlog Posts!</h1>
+    {% for post in allposts%}
+    <div class="card my-4">
+        <div class="card-header">
+            <h2 class="card-title" style="color:#5cb3b2;">{{post.title}}</h2>
+        </div>
+
+        <div class="card-body">
+            <p class="card-text">
+                {{post.content | truncatechars:150}}
+            </p>
+            <a href="/blog/{{post.slug}}" class="btn btn-primary">Read More--></a>
+        </div>
+        <div class="card-footer text-muted text-center">
+            <h6> articles by {{post.author}}, Date and Time is: {{post.timestamp}}  </h6>
+        </div>
+
+    </div>
+    {% endfor%}
+</div>
 {%endblock body%}

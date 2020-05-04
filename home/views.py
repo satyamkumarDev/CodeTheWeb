@@ -1,10 +1,13 @@
 from django.shortcuts import render, HttpResponse
 from home.models import Contact
 from django.contrib import messages
+from Blog.models import Post
 # Create your views here.
 
 def home(request):
-    return render(request, 'home/home.html')
+    posts=Post.objects.all()
+    homepost={'posts':posts}
+    return render(request, 'home/home.html', homepost)
 
 def contact(request):
     if request.method=='POST':
@@ -13,7 +16,7 @@ def contact(request):
         mob = request.POST['mobile']
         content= request.POST['content']
 
-        if len(name)<3 and len(email)<5 and len(mob)<10 and len(content)<10:
+        if len(name)<3 or len(email)<5 or len(mob)<10 or len(content)<10:
             messages.error(request,"Please fill the form Correctly!")
         else:
             contact=Contact(name=name, email=email, mobile=mob, content=content)
