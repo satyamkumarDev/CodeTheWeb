@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{%block body%}
+
+<div class="container my-4">
+    <h2>Contact CodeTheWeb</h2>
+    <form  method="post" action="/contact">
+        {%csrf_token%}
+
+        <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" name="name" class="form-control" id="name" aria-describedby="name">
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="mobile">Mobile Number</label>
+    <input type="text" name="mobile" class="form-control" id="mobile">
+  </div>
+        <div class="form-group">
+    <label for="content">Describe Your Issue:</label>
+            <textarea class="form-control" name="content" id="content"  rows="5"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+
+{%endblock body%}
