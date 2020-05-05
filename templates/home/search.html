@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Search Results{% endblock title %}
+{%block blogactive%}active{%endblock blogactive%}
+{%block body%}
+<div class="container my-4" xmlns="http://www.w3.org/1999/html">
+    <h1 style="color:red;">Search Results!</h1>
+    {% if posts|length < 0 %}
+    <p style="color:red;" >No Search Results:</p>
+
+    <p>Your search query:<b>{{querry}}</b> did not match any documents.</p>
+        <bold>Suggestions:</bold>
+    <ul class="text-muted">
+        <li>Make sure all words are spelled correctly</li>
+        <li>Try more general keywords</li>
+        <li>Try fewer words</li>
+    </ul>
+    {% endif %}
+    {% for post in allposts%}
+    <div class="card my-4">
+        <div class="card-header">
+            <h2 class="card-title" style="color:#5cb3b2;">{{post.title}}</h2>
+        </div>
+
+        <div class="card-body">
+            <p class="card-text">
+                {{post.content | truncatechars:150}}
+            </p>
+            <a href="/blog/{{post.slug}}" class="btn btn-primary">Read More--></a>
+        </div>
+        <div class="card-footer text-muted text-center">
+            <h6> articles by {{post.author}}, Date and Time is: {{post.timestamp}}  </h6>
+        </div>
+
+    </div>
+    {% endfor%}
+</div>
+{%endblock body%}

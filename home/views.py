@@ -27,3 +27,17 @@ def contact(request):
 
 def about(request):
     return render(request, 'home/about.html')
+
+def search(request):
+    querry=request.GET['querry']
+    if len(querry)>30:
+        allposts=Post.objects.none()
+    else:
+        allpostTitle=Post.objects.filter(title__icontains=querry)
+        allpostContent=Post.objects.filter(content__icontains=querry)
+        allposts=allpostTitle.union(allpostContent)
+    if allposts.count() == 0:
+        messages.warning(request,'No search results Found, Please refine your query')
+    posts={'allposts':allposts, 'querry':querry}
+    return render(request,'home/search.html',posts)
+    # return HttpResponse('This is search!')
