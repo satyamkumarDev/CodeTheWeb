@@ -14,4 +14,32 @@
 
     </div>
 </div>
+<div class="container">
+
+    <h2>Comments</h2>
+    <form action="/blog/postComment" method="post">
+        {%csrf_token%}
+  <div class="form-group">
+    <label for="comment">Post Comment</label>
+    <input type="text" name="comment"  class="form-control" id="comment" aria-describedby="commentHelp" >
+  </div>
+  <div class="form-group">
+           <input type="hidden" name="postSno" value="{{post.post_id}}">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+    {% for comment in comments %}
+        <div class="row my-3">
+        <div class="col-md-2"><img class="rounded mx-auto d-block w-100" src="/static/images/user.jpg" alt="user"></div>
+        <div class="col-md-10">
+            <p><b>{{comment.user.username}} </b> <i>at</i> {{comment.timestamp}}</p>
+            <div class="my-2">{{comment.comment}}</div></div>
+    </div>
+    {% endfor%}
+
+
+</div>
 {%endblock body%}

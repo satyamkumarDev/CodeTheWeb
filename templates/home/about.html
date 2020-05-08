@@ -1,7 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock title %}
+{% block title %}About{% endblock title %}
 {%block aboutactive%}active{%endblock aboutactive%}
 {%block body%}
-<h1>About Templates!</h1>
+<div class="container my-3">
+    <div class="jumbotron">
+        <h1 class="display-4" style="color:#3cb5b2" >Welcome To CodeTheWeb</h1>
+        <p class="lead">CodeTheWeb is myBlog posts web application, which I have developed to help the students.</p>
+        <hr class="my-4">
+        <p>This blog contains the posts related to technical subjects like Python, Reactjs, javascript, etc.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/blog" role="button">Go To myBlog</a>
+        </p>
+    </div>
+</div>
 {%endblock body%}
